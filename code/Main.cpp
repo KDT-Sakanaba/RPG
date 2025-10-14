@@ -6,6 +6,9 @@ using namespace std;
 
 int main() {
 
-	Player::PlayerInstance().PlayerSet();
-	Player::PlayerInstance().PlayerAttack();
+	Player& p1 = Player::PlayerInstance();
+
+	p1.PlayerSet();
+
+	p1.PlayerAttack();
 }

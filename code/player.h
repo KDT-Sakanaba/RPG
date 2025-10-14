@@ -17,6 +17,8 @@ private:
 	//int Gold;
 	//int EXP;
 
+	int a = 0;
+
 public:
 
 	////コピーと代入禁止
@@ -29,9 +31,11 @@ public:
 	//	return instance;
 	//}
 
+
 	// シングルトン科　やり直し
 	static Player& PlayerInstance();
 
+	// こいつがエラーの原因です対処しておいてください
 	Player() = default;
 	
 	// 基礎データを持つ
