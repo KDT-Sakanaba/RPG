@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <iostream>
+#include "player.h"
 
 using namespace std;
 
 int main() {
 
-	cout << "a" << endl;
-
+	Player::PlayerInstance().PlayerSet();
+	Player::PlayerInstance().PlayerAttack();
 }
