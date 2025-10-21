@@ -2,16 +2,16 @@
 #include "player.h"
 
 // データを持っているところ
-const PlayerDate PlayerFactory::PlayerTable[] = {
+const PlayerData PlayerFactory::PlayerTable[] = {
 	// レベル,体力,攻撃力,防御力,速度
-	{1,10,10,10,10},
+	{1,10,10,5,10},
 	{2,20,20,20,20},
 	{3,30,30,30,30},
 	{4,40,40,40,40},
 	{5,50,50,50,50},
 };
 // データのサイズを取得
-const int PlayerFactory::PlayerTableSize = sizeof(PlayerTable) / sizeof(PlayerDate);
+const int PlayerFactory::PlayerTableSize = sizeof(PlayerTable) / sizeof(PlayerData);
 
 // プレイヤーの作成
 Player* PlayerFactory::CreatePlayer(int LVL) {

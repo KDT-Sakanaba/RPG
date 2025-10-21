@@ -1,10 +1,13 @@
 #pragma once
-
 // プレイヤーを表す構造体
-struct PlayerDate {
+struct EnemyData {
 
+	// Id
+	int ID;
 	// レベル
 	int LVL;
+	// 種族
+	const char* NAME;
 	// 体力
 	int HP;
 	// 攻撃力

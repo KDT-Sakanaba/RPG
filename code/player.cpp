@@ -11,22 +11,36 @@ Player& Player::PlayerInstance()
 
 void Player::PlayerSet()
 {
-	PlayerFactory::CreatePlayer(1);
+	currentPlayer = PlayerFactory::CreatePlayer(1);
 }
 
-void Player::PlayerLvlUp(int beforeLVL)
+void Player::PlayerState()
 {
-	PlayerFactory::CreatePlayer(beforeLVL + 1);
+	cout << "Player : ";
+	cout << " : LVL " << currentPlayer->LVL;
+	cout << " : HP " << currentPlayer->HP;
+	cout << " : ATK " << currentPlayer->ATK;
+	cout << " : DEF " << currentPlayer->DEF;
+	cout << " : SPD " << currentPlayer->SPD << endl;
 }
 
-void Player::PlayerAttack()
+void Player::PlayerLvlUp()
+{
+	currentPlayer = PlayerFactory::CreatePlayer(currentPlayer->LVL + 1);
+}
+
+void Player::PlayerAttack(int EnemyDEF)
 {
 	cout << "プレイヤーの攻撃" << endl;
-	cout << PlayerATKGet() << "のダメージ" << endl;
+	cout << currentPlayer->ATK - EnemyDEF << "のダメージ" << endl;
 }
 
 void Player::PlayerDefence(int EnemyATK)
 {
-	//PlayerHPSet(PlayerHPGet() - (EnemyATK - PlayerDEFGet()));
-	cout << "残りHP" << PlayerHPGet() << endl;
+	currentPlayer->HP = currentPlayer->HP - (EnemyATK - currentPlayer->DEF);
+}
+
+void Player::PlayerHeal()
+{
+	currentPlayer->HP = currentPlayer->HP + 10;
 }

@@ -1,17 +1,17 @@
 #pragma once
-#include "PlayerData.h"
+#include "EnemyData.h"
 
-class Player;
+class Enemy;
 
 // プレイヤーの生成をするファクトリー（なぜ作ったかわからないが敵に移設するので残す）
-class PlayerFactory
+class EnemyFactory
 {
 	// プレイヤーのデータを管理する
-	static const PlayerData PlayerTable[];
+	static const EnemyData EnemyTable[];
 	// 上のサイズ
-	static const int PlayerTableSize;
+	static const int EnemyTableSize;
 
 public:
 	// レベルによって持ってくるデータが違う
-	static Player* CreatePlayer(int LVL);
+	static Enemy* CreateEnemy(int ID,int LVL);
 };

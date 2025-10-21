@@ -3,10 +3,6 @@
 
 class Player {
 private:
-	//// シングルトン科
-	//// コンストラクタとデストラクタ
-	//Player() = default;
-	//~Player() = default;
 
 	// 基本的なデータ
 	int LVL;
@@ -17,30 +13,21 @@ private:
 	//int Gold;
 	//int EXP;
 
-	int a = 0;
+	// データを持つもの
+	Player* currentPlayer = nullptr;
 
 public:
-
-	////コピーと代入禁止
-	//Player(const Player&) = default;
-	//Player& operator = (const Player&) = default;
-	//
-	//// 最初にだけ生成する仕組み
-	//static Player& PlayerInstance() {
-	//	static Player instance;
-	//	return instance;
-	//}
-
 
 	// シングルトン科　やり直し
 	static Player& PlayerInstance();
 
-	// こいつがエラーの原因です対処しておいてください
-	Player() = default;
+	// 初期化
+	Player()
+		: LVL(0), HP(0), ATK(0), DEF(0), SPD(0) {
+	}
 	
 	// 基礎データを持つ
-
-	Player(const PlayerDate& data)
+	Player(const PlayerData& data)
 		: LVL(data.LVL),
 		HP(data.HP),
 		ATK(data.ATK),
@@ -50,28 +37,26 @@ public:
 		//EXP(data.EXP),
 	{}
 
-	// セッター
-	//int PlayerHPSet(int hp) {
-	//	HP = hp;
-	//}
-
 	// ゲッター
-	int PlayerHPGet() { return HP; }
-	int PlayerATKGet() { return ATK; }
-	int PlayerDEFGet() { return DEF; }
-	int PlayerSPDGet() { return SPD; }
+	int PlayerHPGet() { return currentPlayer->HP; }
+	int PlayerATKGet() { return currentPlayer->ATK; }
+	int PlayerDEFGet() { return currentPlayer->DEF; }
+	int PlayerSPDGet() { return currentPlayer->SPD; }
 
 	// プレイヤーを作成
 	void PlayerSet();
 
+	// 表示
+	void PlayerState();
+
 	// プレイヤーのレベルアップ
-	void PlayerLvlUp(int beforeLVL);
+	void PlayerLvlUp();
 
 	// 攻撃した時の処理
-	void PlayerAttack();
+	void PlayerAttack(int EnemyDEF);
 
 	// 攻撃された時の処理
 	void PlayerDefence(int Enemy_ATK);
 
-
+	void PlayerHeal();
 };
