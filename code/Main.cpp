@@ -14,9 +14,11 @@ enum class GameState {
 
 int main() {
 
+	// State ŠÇ—
 	GameState mode = GameState::Title;
 	int keyPress;
 
+	// Å‰‚Éì‚é
 	Player& p1 = Player::PlayerInstance();
 	ObjectPool<Enemy> enemyPool(3);
 	p1.PlayerSet();
@@ -27,8 +29,10 @@ int main() {
 		enemy[a]->EnemySet(a);
 	}
 
+	// ŠÇ—
 	while (mode != GameState::End) {
 		switch (mode) {
+			// ƒ^ƒCƒgƒ‹
 		case GameState::Title:
 			cout << "1 to GAMESTART" << endl;
 			cout << "“G‚ğ“|‚¹" << endl;
@@ -41,10 +45,12 @@ int main() {
 			
 			break;
 	
+			// ƒQ[ƒ€
 		case GameState::Game:
 
 			cout << "--------------------" << endl;
 
+			// “G‚Æ–¡•û‚Ìó‘Ô‚Ì•\¦
 			p1.PlayerState();
 			for (int a = 0; a < 3; a++) {
 				enemy[a]->EnemyState();
@@ -52,12 +58,14 @@ int main() {
 
 			cout << "--------------------" << endl;
 
+			// UŒ‚•û–@‚Ì‘I‘ğ
 			cout << "1-“G1‚ÉUŒ‚ : 2-“G2‚ÉUŒ‚ : 3-“G3‚ÉUŒ‚ : 4-“G‘S‘Ì‚ÉUŒ‚ " << endl;
 
 			cin >> keyPress;
 
 			cout << "--------------------" << endl;
 
+			// ’P‘Ì‚Ì“G‚ÉUŒ‚‚·‚é‚Æ‚«‚Ìˆ—
 			if (keyPress == 1 or keyPress == 2 or keyPress == 3) {
 				if (enemy[keyPress - 1]->EnemyHPGet() >= 1) {
 					cout << enemy[keyPress - 1]->EnemyNAMEGet() << "‚Ö";
@@ -78,6 +86,7 @@ int main() {
 				}
 			}
 
+			// “G‘S‘Ì‚ÉUŒ‚‚µ‚½‚Ìˆ—
 			if (keyPress == 4) {
 				for (int e_num = 0; e_num < 3; e_num++) {
 					if (enemy[e_num]->EnemyHPGet() >= 1) {
@@ -95,6 +104,7 @@ int main() {
 					}
 				}
 
+				// ˆê”ÔUŒ‚—Í‚Ì‚‚¢“G‚ªUŒ‚‚µ‚Ä‚­‚éˆ—
 				int max_power = 0;
 				for (int e_num = 0; e_num < 3; e_num++) {
 					if (enemy[e_num]->EnemyHPGet() >= 1 and max_power <= enemy[e_num]->EnemyATKGet()) {
@@ -109,12 +119,14 @@ int main() {
 				
 			}
 
+			// “G‚ğ‚·‚×‚Ä“|‚µ‚½‚çƒQ[ƒ€ƒNƒŠƒA
 			if (enemy[0]->EnemyHPGet() <= 0 and enemy[1]->EnemyHPGet() <= 0 and enemy[2]->EnemyHPGet() <= 0) {
 				cout << "--------------------" << endl;
 				mode = GameState::End;
 				cout << "YOU WIN" << endl;
 				cout << "--------------------" << endl;
 			}
+			// “G‚É“|‚³‚ê‚½‚çƒQ[ƒ€ƒI[ƒo[
 			if (p1.PlayerHPGet() <= 0) {
 				cout << "--------------------" << endl;
 				mode = GameState::End;
@@ -123,6 +135,7 @@ int main() {
 			}
 			break;
 	
+			// ‚±‚ê‚Í‚¢‚ç‚È‚¢
 		case GameState::End:
 
 			break;
