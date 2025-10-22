@@ -11,11 +11,5 @@ struct PlayerData {
 	int ATK;
 	// 防御力
 	int DEF;
-	// 速度
-	int SPD;
 
-	//// 経験値
-	//int EXP;
-	//// コイン
-	//int GLD;
 };

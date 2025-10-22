@@ -13,5 +13,5 @@ class EnemyFactory
 
 public:
 	// レベルによって持ってくるデータが違う
-	static Enemy* CreateEnemy(int ID,int LVL);
+	static Enemy* CreateEnemy(int ID);
 };

@@ -6,14 +6,11 @@ private:
 
 	// 基本的なデータ
 	int ID;
-	int LVL;
 	const char* NAME;
 	int HP;
 	int ATK;
 	int DEF;
-	int SPD;
-	//int Gold;
-	//int EXP;
+
 
 	// データを持つもの
 	Enemy* currentEnemy = nullptr;
@@ -25,42 +22,37 @@ public:
 
 	// 初期化
 	Enemy()
-		: ID(0),LVL(0),NAME(0), HP(0), ATK(0), DEF(0), SPD(0) {
+		: ID(0),NAME(0), HP(0), ATK(0), DEF(0) {
 	}
 
 	// 基礎データを持つ
 	Enemy(const EnemyData& data)
 		:ID (data.ID),
-		LVL(data.LVL),
 		NAME(data.NAME),
 		HP(data.HP),
 		ATK(data.ATK),
-		DEF(data.DEF),
-		SPD(data.SPD)
-		//Gold(data.Gold),
-		//EXP(data.EXP),
+		DEF(data.DEF)
+
 	{
 	}
 
 	// ゲッター
+	int EnemyIDGet() { return currentEnemy->ID; }
+	const char* EnemyNAMEGet() { return currentEnemy->NAME; };
 	int EnemyHPGet() { return currentEnemy->HP; }
 	int EnemyATKGet() { return currentEnemy->ATK; }
 	int EnemyDEFGet() { return currentEnemy->DEF; }
-	int EnemySPDGet() { return currentEnemy->SPD; }
 
-	// プレイヤーを作成
-	void EnemySet();
+	// エネミーの設定
+	void EnemySet(int num);
 
-	// 表示
+	// エネミーのステータスの表示
 	void EnemyState();
 
-	// プレイヤーのレベルアップ
-	void EnemyLvlUp();
-
-	// 攻撃した時の処理
+	// エネミーの攻撃した時の処理
 	void EnemyAttack(int PlayerDEF);
 
-	// 攻撃された時の処理
+	// エネミーの攻撃された時の処理
 	void EnemyDefence(int EnemyDEF);
 
 

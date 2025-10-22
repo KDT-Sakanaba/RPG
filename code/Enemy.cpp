@@ -3,39 +3,42 @@
 
 using namespace std;
 
+// エネミーのインスタンスの生成
 Enemy& Enemy::EnemyInstance()
 {
 	static Enemy instance;
 	return instance;
 }
 
-void Enemy::EnemySet()
+// エネミーの設定
+void Enemy::EnemySet(int num)
 {
-	currentEnemy = EnemyFactory::CreateEnemy(0,1);
+	std::srand(std::time(0)); // 現在時刻を疑似乱数のシード値とする。
+	currentEnemy = EnemyFactory::CreateEnemy((std::rand() + num) % 4);
 }
 
+// エネミーのステータスの表示
 void Enemy::EnemyState()
 {
 	cout << currentEnemy->NAME;
-	cout << " : LVL " << currentEnemy->LVL;
 	cout << " : HP " << currentEnemy->HP;
 	cout << " : ATK " << currentEnemy->ATK;
-	cout << " : DEF " << currentEnemy->DEF;
-	cout << " : SPD " << currentEnemy->SPD << endl;
+	cout << " : DEF " << currentEnemy->DEF << endl;
 }
 
-void Enemy::EnemyLvlUp()
-{
-	currentEnemy = EnemyFactory::CreateEnemy(currentEnemy->ID,currentEnemy->LVL + 1);
-}
-
+// エネミーが攻撃した時の処理
 void Enemy::EnemyAttack(int PlayerDEF)
 {
 	cout << currentEnemy->NAME << "の攻撃" << endl;
 	cout << currentEnemy->ATK - PlayerDEF << "のダメージ" << endl;
 }
 
+// エネミーが攻撃を受けた時の処理
 void Enemy::EnemyDefence(int PlayerATK)
 {
+	if (PlayerATK - currentEnemy->DEF <= 0) {
+		PlayerATK = currentEnemy->DEF + 1;
+	}
+	
 	currentEnemy->HP = currentEnemy->HP - (PlayerATK - currentEnemy->DEF);
 }

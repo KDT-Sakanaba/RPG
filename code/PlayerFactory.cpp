@@ -4,11 +4,11 @@
 // データを持っているところ
 const PlayerData PlayerFactory::PlayerTable[] = {
 	// レベル,体力,攻撃力,防御力,速度
-	{1,10,10,5,10},
-	{2,20,20,20,20},
-	{3,30,30,30,30},
-	{4,40,40,40,40},
-	{5,50,50,50,50},
+	{1,20,10,5},
+	{2,35,20,10},
+	{3,50,30,15},
+	{4,65,40,20},
+	{5,80,50,25},
 };
 // データのサイズを取得
 const int PlayerFactory::PlayerTableSize = sizeof(PlayerTable) / sizeof(PlayerData);
@@ -22,5 +22,4 @@ Player* PlayerFactory::CreatePlayer(int LVL) {
 	}
 
 	return nullptr;
-
 }

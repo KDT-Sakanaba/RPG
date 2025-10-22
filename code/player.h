@@ -9,21 +9,18 @@ private:
 	int HP;
 	int ATK;
 	int DEF;
-	int SPD;
-	//int Gold;
-	//int EXP;
 
 	// データを持つもの
 	Player* currentPlayer = nullptr;
 
 public:
 
-	// シングルトン科　やり直し
+	// インスタンスの生成
 	static Player& PlayerInstance();
 
 	// 初期化
 	Player()
-		: LVL(0), HP(0), ATK(0), DEF(0), SPD(0) {
+		: LVL(0), HP(0), ATK(0), DEF(0) {
 	}
 	
 	// 基礎データを持つ
@@ -31,22 +28,18 @@ public:
 		: LVL(data.LVL),
 		HP(data.HP),
 		ATK(data.ATK),
-		DEF(data.DEF),
-		SPD(data.SPD)
-		//Gold(data.Gold),
-		//EXP(data.EXP),
+		DEF(data.DEF)
 	{}
 
 	// ゲッター
 	int PlayerHPGet() { return currentPlayer->HP; }
 	int PlayerATKGet() { return currentPlayer->ATK; }
 	int PlayerDEFGet() { return currentPlayer->DEF; }
-	int PlayerSPDGet() { return currentPlayer->SPD; }
 
-	// プレイヤーを作成
+	// プレイヤーの設定
 	void PlayerSet();
 
-	// 表示
+	// プレイヤーのステータスの表示
 	void PlayerState();
 
 	// プレイヤーのレベルアップ
@@ -57,6 +50,4 @@ public:
 
 	// 攻撃された時の処理
 	void PlayerDefence(int Enemy_ATK);
-
-	void PlayerHeal();
 };

@@ -4,8 +4,6 @@ struct EnemyData {
 
 	// Id
 	int ID;
-	// レベル
-	int LVL;
 	// 種族
 	const char* NAME;
 	// 体力
@@ -14,11 +12,5 @@ struct EnemyData {
 	int ATK;
 	// 防御力
 	int DEF;
-	// 速度
-	int SPD;
 
-	//// 経験値
-	//int EXP;
-	//// コイン
-	//int GLD;
 };

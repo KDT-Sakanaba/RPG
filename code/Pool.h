@@ -16,6 +16,7 @@ class PoolHandle {
 	}
 
 public:
+
 	// コピーをできなくする
 	PoolHandle(const PoolHandle&) = delete;
 	// ムーブできるようにする
