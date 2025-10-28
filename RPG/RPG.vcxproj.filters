@@ -33,19 +33,28 @@
     <ClCompile Include="..\code\PlayerFactory.cpp">
       <Filter>ソース ファイル\player</Filter>
     </ClCompile>
+    <ClCompile Include="..\code\EnemyFactory.cpp">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClCompile>
     <ClCompile Include="..\code\player.cpp">
       <Filter>ソース ファイル\player</Filter>
     </ClCompile>
     <ClCompile Include="..\code\Enemy.cpp">
       <Filter>ソース ファイル\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="..\code\EnemyFactory.cpp">
-      <Filter>ソース ファイル\Enemy</Filter>
+    <ClCompile Include="..\code\View.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\code\player.h">
-      <Filter>ヘッダー ファイル\player</Filter>
+    <ClInclude Include="..\code\Pool.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\EnemyFactory.h">
+      <Filter>ヘッダー ファイル\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\EnemyData.h">
+      <Filter>ヘッダー ファイル\enemy</Filter>
     </ClInclude>
     <ClInclude Include="..\code\PlayerData.h">
       <Filter>ヘッダー ファイル\player</Filter>
@@ -56,13 +65,10 @@
     <ClInclude Include="..\code\Enemy.h">
       <Filter>ヘッダー ファイル\enemy</Filter>
     </ClInclude>
-    <ClInclude Include="..\code\EnemyFactory.h">
-      <Filter>ヘッダー ファイル\enemy</Filter>
+    <ClInclude Include="..\code\player.h">
+      <Filter>ヘッダー ファイル\player</Filter>
     </ClInclude>
-    <ClInclude Include="..\code\EnemyData.h">
-      <Filter>ヘッダー ファイル\enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="..\code\Pool.h">
+    <ClInclude Include="..\code\View.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -32,6 +32,7 @@ public:
 	{}
 
 	// ゲッター
+	int PlayerLVLGet() { return currentPlayer->LVL; }
 	int PlayerHPGet() { return currentPlayer->HP; }
 	int PlayerATKGet() { return currentPlayer->ATK; }
 	int PlayerDEFGet() { return currentPlayer->DEF; }
@@ -39,14 +40,14 @@ public:
 	// プレイヤーの設定
 	void PlayerSet();
 
-	// プレイヤーのステータスの表示
-	void PlayerState();
+	//// プレイヤーのステータスの表示
+	//void PlayerState();
 
 	// プレイヤーのレベルアップ
 	void PlayerLvlUp();
 
 	// 攻撃した時の処理
-	void PlayerAttack(int EnemyDEF);
+	//void PlayerAttack(int EnemyDEF);
 
 	// 攻撃された時の処理
 	void PlayerDefence(int Enemy_ATK);

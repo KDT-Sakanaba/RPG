@@ -3,6 +3,7 @@
 #include "player.h"
 #include "Enemy.h"
 #include "Pool.h"
+#include "View.h"
 
 using namespace std;
 
@@ -23,6 +24,8 @@ int main() {
 	ObjectPool<Enemy> enemyPool(3);
 	p1.PlayerSet();
 
+	unique_ptr<View> view;
+
 	PoolHandle<Enemy> enemy[3] = {enemyPool.Acquire(),enemyPool.Acquire(),enemyPool.Acquire()};
 	for (int a = 0; a < 3; a++) {
 		enemy[a]->EnemyInstance();
@@ -34,8 +37,7 @@ int main() {
 		switch (mode) {
 			// ƒ^ƒCƒgƒ‹
 		case GameState::Title:
-			cout << "1 to GAMESTART" << endl;
-			cout << "“G‚ğ“|‚¹" << endl;
+			view->Start();
 
 			cin >> keyPress;
 			if (keyPress == 1) {
@@ -48,71 +50,59 @@ int main() {
 			// ƒQ[ƒ€
 		case GameState::Game:
 
-			cout << "--------------------" << endl;
-
-			// “G‚Æ–¡•û‚Ìó‘Ô‚Ì•\¦
-			p1.PlayerState();
+			view->PlayerState(p1.PlayerLVLGet(), p1.PlayerHPGet(), p1.PlayerATKGet(), p1.PlayerDEFGet());
 			for (int a = 0; a < 3; a++) {
-				enemy[a]->EnemyState();
+				view->EnemyState(enemy[a]->EnemyNAMEGet(), enemy[a]->EnemyHPGet(), enemy[a]->EnemyATKGet(), enemy[a]->EnemyDEFGet());
 			}
-
-			cout << "--------------------" << endl;
-
-			// UŒ‚•û–@‚Ì‘I‘ğ
-			cout << "1-“G1‚ÉUŒ‚ : 2-“G2‚ÉUŒ‚ : 3-“G3‚ÉUŒ‚ : 4-“G‘S‘Ì‚ÉUŒ‚ " << endl;
+			view->LOG();
 
 			cin >> keyPress;
-
+			
 			cout << "--------------------" << endl;
-
+			
 			// ’P‘Ì‚Ì“G‚ÉUŒ‚‚·‚é‚Æ‚«‚Ìˆ—
 			if (keyPress == 1 or keyPress == 2 or keyPress == 3) {
 				if (enemy[keyPress - 1]->EnemyHPGet() >= 1) {
-					cout << enemy[keyPress - 1]->EnemyNAMEGet() << "‚Ö";
-					p1.PlayerAttack(enemy[keyPress - 1]->EnemyDEFGet());
+					view->Attack(enemy[keyPress -1]->EnemyNAMEGet(),p1.PlayerATKGet(),enemy[keyPress-1]->EnemyDEFGet());
 					enemy[keyPress - 1]->EnemyDefence(p1.PlayerATKGet());
 					if (enemy[keyPress - 1]->EnemyHPGet() > 0) {
-						enemy[keyPress - 1]->EnemyAttack(p1.PlayerDEFGet());
+						view->Defence(enemy[keyPress - 1]->EnemyNAMEGet(), enemy[keyPress - 1]->EnemyATKGet(), p1.PlayerDEFGet());
 						p1.PlayerDefence(enemy[keyPress - 1]->EnemyATKGet());
 					}
 					else {
-						cout << enemy[keyPress - 1]->EnemyNAMEGet() << "‚ğ“|‚µ‚½" << endl;
-						cout << "ƒŒƒxƒ‹ƒAƒbƒv‚µ‚½" << endl;
+						view->OUT(enemy[keyPress - 1]->EnemyNAMEGet());
 						p1.PlayerLvlUp();
 					}
 				}
 				else {
-					cout << "‚»‚±‚É‚Í“G‚Í‚¢‚È‚¢" << endl;
+					view->No();
 				}
 			}
-
+			
 			// “G‘S‘Ì‚ÉUŒ‚‚µ‚½‚Ìˆ—
 			if (keyPress == 4) {
 				for (int e_num = 0; e_num < 3; e_num++) {
 					if (enemy[e_num]->EnemyHPGet() >= 1) {
-						cout << enemy[e_num]->EnemyNAMEGet() << "‚Ö";
-						p1.PlayerAttack(enemy[e_num]->EnemyDEFGet());
+						view->Attack(enemy[e_num]->EnemyNAMEGet(), p1.PlayerATKGet(), enemy[e_num]->EnemyDEFGet());
 						enemy[e_num]->EnemyDefence(p1.PlayerATKGet());
 						if (enemy[e_num]->EnemyHPGet() <= 0) {
-							cout << enemy[e_num]->EnemyNAMEGet() << "‚ğ“|‚µ‚½" << endl;
-							cout << "ƒŒƒxƒ‹ƒAƒbƒv‚µ‚½" << endl;
+							view->OUT(enemy[e_num]->EnemyNAMEGet());
 							p1.PlayerLvlUp();
 						}
 					}
 					else {
-						cout << "‚»‚±‚É‚Í“G‚Í‚¢‚È‚¢" << endl;
+						view->No();
 					}
 				}
-
-				// ˆê”ÔUŒ‚—Í‚Ì‚‚¢“G‚ªUŒ‚‚µ‚Ä‚­‚éˆ—
+			//
+			//	// ˆê”ÔUŒ‚—Í‚Ì‚‚¢“G‚ªUŒ‚‚µ‚Ä‚­‚éˆ—
 				int max_power = 0;
 				for (int e_num = 0; e_num < 3; e_num++) {
 					if (enemy[e_num]->EnemyHPGet() >= 1 and max_power <= enemy[e_num]->EnemyATKGet()) {
 						max_power = enemy[e_num]->EnemyATKGet();
 					}
 					if (e_num == 2 and max_power >= 0) {
-						cout << "“G‚ÌUŒ‚" << endl;
-						cout << max_power - p1.PlayerDEFGet() << "‚Ìƒ_ƒ[ƒW" << endl;
+						view->Damage(max_power, p1.PlayerDEFGet());
 						p1.PlayerDefence(max_power);
 					}
 				}
@@ -121,18 +111,19 @@ int main() {
 
 			// “G‚ğ‚·‚×‚Ä“|‚µ‚½‚çƒQ[ƒ€ƒNƒŠƒA
 			if (enemy[0]->EnemyHPGet() <= 0 and enemy[1]->EnemyHPGet() <= 0 and enemy[2]->EnemyHPGet() <= 0) {
-				cout << "--------------------" << endl;
 				mode = GameState::End;
-				cout << "YOU WIN" << endl;
-				cout << "--------------------" << endl;
+				view->WIN();
 			}
 			// “G‚É“|‚³‚ê‚½‚çƒQ[ƒ€ƒI[ƒo[
 			if (p1.PlayerHPGet() <= 0) {
-				cout << "--------------------" << endl;
 				mode = GameState::End;
-				cout << "YOU LOSE" << endl;
-				cout << "--------------------" << endl;
+				view->LOSE();
 			}
+
+			if (keyPress == 0) {
+				mode = GameState::End;
+			}
+
 			break;
 	
 			// ‚±‚ê‚Í‚¢‚ç‚È‚¢

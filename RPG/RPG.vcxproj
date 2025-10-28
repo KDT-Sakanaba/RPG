@@ -24,6 +24,7 @@
     <ClCompile Include="..\code\Main.cpp" />
     <ClCompile Include="..\code\player.cpp" />
     <ClCompile Include="..\code\PlayerFactory.cpp" />
+    <ClCompile Include="..\code\View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\code\Enemy.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="..\code\PlayerData.h" />
     <ClInclude Include="..\code\PlayerFactory.h" />
     <ClInclude Include="..\code\Pool.h" />
+    <ClInclude Include="..\code\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

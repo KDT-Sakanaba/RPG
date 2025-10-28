@@ -42,15 +42,16 @@ public:
 	int EnemyHPGet() { return currentEnemy->HP; }
 	int EnemyATKGet() { return currentEnemy->ATK; }
 	int EnemyDEFGet() { return currentEnemy->DEF; }
+	auto EnemyStateGet() { return currentEnemy->NAME, currentEnemy->HP, currentEnemy->ATK, currentEnemy->DEF; }
 
 	// エネミーの設定
 	void EnemySet(int num);
 
-	// エネミーのステータスの表示
-	void EnemyState();
+	//// エネミーのステータスの表示
+	//void EnemyState();
 
 	// エネミーの攻撃した時の処理
-	void EnemyAttack(int PlayerDEF);
+	//void EnemyAttack(int PlayerDEF);
 
 	// エネミーの攻撃された時の処理
 	void EnemyDefence(int EnemyDEF);
