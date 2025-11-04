@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\code\Enemy.cpp" />
     <ClCompile Include="..\code\EnemyFactory.cpp" />
+    <ClCompile Include="..\code\Process.cpp" />
     <ClCompile Include="..\code\Main.cpp" />
     <ClCompile Include="..\code\player.cpp" />
     <ClCompile Include="..\code\PlayerFactory.cpp" />
@@ -30,6 +31,7 @@
     <ClInclude Include="..\code\Enemy.h" />
     <ClInclude Include="..\code\EnemyData.h" />
     <ClInclude Include="..\code\EnemyFactory.h" />
+    <ClInclude Include="..\code\Process.h" />
     <ClInclude Include="..\code\player.h" />
     <ClInclude Include="..\code\PlayerData.h" />
     <ClInclude Include="..\code\PlayerFactory.h" />

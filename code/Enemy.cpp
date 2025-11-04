@@ -14,15 +14,8 @@ Enemy& Enemy::EnemyInstance()
 void Enemy::EnemySet(int num)
 {
 	std::srand(std::time(0)); // 現在時刻を疑似乱数のシード値とする。
-	currentEnemy = EnemyFactory::CreateEnemy((std::rand() + num) % 4);
+	currentEnemy = EnemyFactory::CreateEnemy((std::rand() + num) % Enemy_type);
 }
-
-// エネミーが攻撃した時の処理
-//void Enemy::EnemyAttack(int PlayerDEF)
-//{
-//	cout << currentEnemy->NAME << "の攻撃" << endl;
-//	cout << currentEnemy->ATK - PlayerDEF << "のダメージ" << endl;
-//}
 
 // エネミーが攻撃を受けた時の処理
 void Enemy::EnemyDefence(int PlayerATK)

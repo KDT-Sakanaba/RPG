@@ -11,13 +11,15 @@ private:
 	int ATK;
 	int DEF;
 
+	#define Enemy_type 4
+
 
 	// データを持つもの
 	Enemy* currentEnemy = nullptr;
 
 public:
 
-	// シングルトン科　やり直し
+	// シングルトン科
 	static Enemy& EnemyInstance();
 
 	// 初期化
@@ -47,14 +49,7 @@ public:
 	// エネミーの設定
 	void EnemySet(int num);
 
-	//// エネミーのステータスの表示
-	//void EnemyState();
-
-	// エネミーの攻撃した時の処理
-	//void EnemyAttack(int PlayerDEF);
-
 	// エネミーの攻撃された時の処理
 	void EnemyDefence(int EnemyDEF);
-
 
 };
