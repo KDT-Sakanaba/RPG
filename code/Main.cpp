@@ -45,6 +45,8 @@ int main() {
 		enemy[a]->EnemySet(a);
 	}
 
+	view = std::make_shared<View>();
+
 	// ŠÇ—
 	while (mode != GameState::End) {
 		switch (mode) {

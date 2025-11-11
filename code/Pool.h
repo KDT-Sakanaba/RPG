@@ -25,6 +25,7 @@ public:
 		other.obj_ = nullptr;
 		other.pool_ = nullptr;
 	}
+
 	// デストラクターで自動変換
 	~PoolHandle() {
 		if (obj_ && pool_) {

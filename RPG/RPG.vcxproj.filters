@@ -25,6 +25,12 @@
     <Filter Include="ソース ファイル\Enemy">
       <UniqueIdentifier>{a2807b02-c59f-46bc-b969-8cad092971b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\scene">
+      <UniqueIdentifier>{b32d5987-2e03-47a1-83a6-29995b0fc88f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\scene">
+      <UniqueIdentifier>{cad36288-1b4c-471a-8f83-2f97a50d17b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\code\Main.cpp">
@@ -47,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="..\code\Process.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\TitleScene.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\GameScene.cpp">
+      <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +88,15 @@
     </ClInclude>
     <ClInclude Include="..\code\Process.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\TitleScene.h">
+      <Filter>ヘッダー ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\SceneManager.h">
+      <Filter>ヘッダー ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\GameScene.h">
+      <Filter>ヘッダー ファイル\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
